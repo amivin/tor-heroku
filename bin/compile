@@ -21,7 +21,7 @@ ENV_DIR=$3
 TOR_SIG_NAME=${TOR_SRC_NAME}.asc
 TOR_SRC_URL=${TOR_DIST_URL}${TOR_SRC_NAME}
 TOR_SRC_SIG_URL=${TOR_DIST_URL}${TOR_SIG_NAME}
-HASH_KEY=./tor/bin/tor --hash-password "pa55w0rd"
+HASH_KEY= ./tor/bin/tor --hash-password "pa55w0rd"
 ################################################################################
 # Try use cache
 ################################################################################
@@ -100,11 +100,12 @@ echo "Setting up hidden service"
 cat > ${HOME}/hidden_service/private_key <<EPK
 \${HIDDEN_PRIVATE_KEY}
 EPK
+echo "HASH_KEY= ./tor/bin/tor --hash-password "pa55w0rd"" >> $HOME/tor/etc/tor/torrc
 echo \${HIDDEN_DOT_ONION} > ${HOME}/hidden_service/hostname
 echo "HiddenServiceDir ${HOME}/hidden_service/" > $HOME/tor/etc/tor/torrc
 echo "HiddenServicePort 80 127.0.0.1:\${PORT}" >> $HOME/tor/etc/tor/torrc
-echo "ControlPort 9051" >>> $HOME/tor/etc/tor/torrc
-echo "HashedControlPassword ${HASH_KEY}" >>>> $HOME/tor/etc/tor/torrc
+echo "ControlPort 9051" >> $HOME/tor/etc/tor/torrc
+echo "HashedControlPassword ${HASH_KEY}" >> $HOME/tor/etc/tor/torrc
 # Use -f to be safe here.
 $HOME/tor/bin/tor -f $HOME/tor/etc/tor/torrc &
 exec \$*
