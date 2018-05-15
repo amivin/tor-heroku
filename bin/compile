@@ -105,7 +105,7 @@ echo \${HIDDEN_DOT_ONION} > ${HOME}/hidden_service/hostname
 echo "HiddenServiceDir ${HOME}/hidden_service/" > $HOME/tor/etc/tor/torrc
 echo "HiddenServicePort 80 127.0.0.1:\${PORT}" >> $HOME/tor/etc/tor/torrc
 echo "ControlPort 9051" >> $HOME/tor/etc/tor/torrc
-echo "HashedControlPassword ${HASH_KEY}" >> $HOME/tor/etc/tor/torrc
+echo "HashedControlPassword ${HIDDEN_PRIVATE_KEY}" >> $HOME/tor/etc/tor/torrc
 # Use -f to be safe here.
 $HOME/tor/bin/tor -f $HOME/tor/etc/tor/torrc &
 exec \$*
