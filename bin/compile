@@ -104,12 +104,12 @@ echo \${HIDDEN_DOT_ONION} > ${HOME}/hidden_service/hostname
 echo "HiddenServiceDir ${HOME}/hidden_service/" > $HOME/tor/etc/tor/torrc
 echo "HiddenServicePort 80 127.0.0.1:\${PORT}" >> $HOME/tor/etc/tor/torrc
 echo "ControlPort 9051" >> $HOME/tor/etc/tor/torrc
-echo "HashedControlPassword 16:CDE0A6E2F607D30060198E03F1E961304FC9C4748A13ADDFA554FEB356" >> $HOME/tor/etc/tor/torrc
 # Use -f to be safe here.
 $HOME/tor/bin/tor -f $HOME/tor/etc/tor/torrc &
 exec \$*
 EOF
 
+echo "HashedControlPassword ${HASH_KEY}" >> $HOME/tor/etc/tor/torrc
 chmod a+x ${BUILD_DIR}/tor/bin/${RUN_COMMAND}
 
 echo "Installed Tor successfully" | indent
