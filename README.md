@@ -38,6 +38,20 @@ SHA, for the .onion name. You'll need to provide these as env vars:
 * `HIDDEN_PRIVATE_KEY`: The contents of a private_key file
 * `HIDDEN_DOT_ONION`: The onion name for the private_key.
 
+### How do you get these variables?
+
+The easiest way is to:
+
+```bash
+$ heroku run bash
+heroku$ mkdir hidden
+heroku$ echo "HiddenServiceDir /app/hidden/" > tmptorrc
+heroku$ echo "HiddenServicePort 80 127.0.0.1:8000" >> tmptorrc
+heroku$ tor -f tmptorrc
+heroku$ cat hidden/*
+heroku$ ^D
+```
+
 ## Features
 
 * Verifies integrity (see yourself how its done, I'm not sure its correct)
