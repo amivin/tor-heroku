@@ -45,6 +45,7 @@ tor -f tmptorrc
 cat hidden/*
 ^D
 ```
+
 ### If you have a HIDDEN_PRIVATE_KEY and HIDDEN_DOT_ONION, set those now:
 ```heroku config:set HIDDEN_PRIVATE_KEY=<YOUR HIDDEN KEY>
 heroku config:set HIDDEN_DOT_ONION=<YOUR DOT ONION>
