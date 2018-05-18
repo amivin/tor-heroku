@@ -1,11 +1,8 @@
 # Tor Hidden Service Buildpack for Heroku
-
 This buildpack sets up a Tor hidden service for your app on Heroku.
 
 ## Setup
-
 Create a Heroku app as normal, with any buildpacks you typically use.
-
 Then:
 
 ```bash
@@ -31,7 +28,6 @@ Your app will only be accessible over Tor, through your configured
 `.onion` address.
 
 ## Variables
-
 Of course, Tor hidden services require that you provide a private_key and it's
 SHA, for the .onion name. You'll need to provide these as env vars:
 
@@ -39,20 +35,21 @@ SHA, for the .onion name. You'll need to provide these as env vars:
 * `HIDDEN_DOT_ONION`: The onion name for the private_key.
 
 ### How do you get these variables?
-
 The easiest way is to:
-
 ```bash
-$ heroku run bash
-heroku$ mkdir hidden
-heroku$ echo "HiddenServiceDir /app/hidden/" > tmptorrc
-heroku$ echo "HiddenServicePort 80 127.0.0.1:8000" >> tmptorrc
-heroku$ tor -f tmptorrc
-heroku$ cat hidden/*
-heroku$ ^D
+heroku run bash
+mkdir hidden
+echo "HiddenServiceDir /app/hidden/" > tmptorrc
+echo "HiddenServicePort 80 127.0.0.1:8000" >> tmptorrc
+tor -f tmptorrc
+cat hidden/*
+^D
+```
+### If you have a HIDDEN_PRIVATE_KEY and HIDDEN_DOT_ONION, set those now:
+```heroku config:set HIDDEN_PRIVATE_KEY=<YOUR HIDDEN KEY>
+heroku config:set HIDDEN_DOT_ONION=<YOUR DOT ONION>
 ```
 
 ## Features
-
 * Verifies integrity (see yourself how its done, I'm not sure its correct)
 * Caches compilation
