@@ -30,7 +30,7 @@ SHA, for the .onion name. You'll need to provide these as env vars:
 * `HIDDEN_PRIVATE_KEY`: The contents of a private_key file
 * `HIDDEN_DOT_ONION`: The onion name for the private_key.
 
-### How do you get these variables?
+#### How do you get these variables?
 The easiest way is to:
 ```bash
 heroku run bash
@@ -41,7 +41,7 @@ tor -f tmptorrc
 cat hidden/*
 ^D
 ```
-### If you have a HIDDEN_PRIVATE_KEY and HIDDEN_DOT_ONION, set those now:
+#### If you have a HIDDEN_PRIVATE_KEY and HIDDEN_DOT_ONION, set those now:
 ```bash
 heroku config:set HIDDEN_PRIVATE_KEY=<YOUR HIDDEN KEY>
 heroku config:set HIDDEN_DOT_ONION=<YOUR DOT ONION>
