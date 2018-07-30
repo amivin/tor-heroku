@@ -56,7 +56,7 @@ fi
 # VERIFY INTEGRITY
 ################################################################################
 if [ $TOR_IS_CACHED -eq 0 ] ; then
-    gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
+    gpg --keyserver pool.sks-keyservers.net --recv-keys 0x4E2C6E8793298290
     gpg --verify ${TOR_SIG_NAME} ${TOR_SRC_NAME} | grep -c "Good signature"
     if [ $? -lt 1 ]; then
         echo "FAILED to verify the signature" | indent
