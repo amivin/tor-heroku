@@ -71,13 +71,13 @@ fi
 if [ $TOR_IS_CACHED -eq 0 ] ; then
     tar -zxf ${TOR_SRC_NAME}
     cd tor-${TOR_VER}
-    ./configure --prefix=$CACHE_DIR/tor
+    ./configure --prefix=$CACHE_DIR/tor --enable-silent-rules
     if [ $? -ne 0 ]; then
         echo "FAILED to configure for compliation" | indent
         exit 1
     fi
 
-    make install
+    make install -q
     if [ $? -ne 0 ]; then
         echo "FAILED to run make install" | indent
         exit  1
