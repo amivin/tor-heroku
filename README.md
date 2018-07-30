@@ -5,7 +5,7 @@ This buildpack sets up a Tor hidden service for your app on Heroku.
 Create a Heroku app as normal, with any buildpacks you typically use.
 Then:
 ```bash
-$ heroku buildpacks:add https://github.com/amivin/heroku-tor.git
+$ heroku buildpacks:add https://github.com/amivin/tor-heroku.git
 ```
 
 With the buildpack installed, you'll need to modify your Procfile such that
